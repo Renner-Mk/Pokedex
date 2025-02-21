@@ -50,3 +50,15 @@ export const typeColor = {
   grass: "#63bb5b",
   normal: "#9099a1"
 }
+
+export interface NamePokemonApi {
+  name: string
+  url: string
+}
+
+export interface ApiResponse {
+  count: number,
+  next: string | null
+  previous: string | null
+  results: NamePokemonApi[]
+}
