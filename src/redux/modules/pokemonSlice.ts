@@ -1,31 +1,27 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { featchPokemons } from "../../services/featchPokemon";
-import { ApiResponse } from "../../types/pokemon";
+import { fetchPokemons } from "../../services/fetchPokemon";
+import { NamedAPIResource } from "../../types/pokemon";
 
-const initialState: ApiResponse = {
-    count: 0,
-    next: null,
-    previous: null,
-    results: []
-}
+const initialState: NamedAPIResource[] = [];
 
-export const featchPokemon = createAsyncThunk('pokemon/featchPokemons', async () => {
-    //fazer o loading
+export const listPokemon = createAsyncThunk(
+  "pokemon/featchPokemons",
+  async () => {
+    const result = await fetchPokemons(1025, 0);
 
-    const result = await featchPokemons(8, 0)
-
-    return result
-})
+    return result;
+  }
+);
 
 const pokemonSlice = createSlice({
-    name: 'pokemon',
-    initialState,
-    reducers: {},
-    extraReducers(builder){
-        builder.addCase(featchPokemon.fulfilled, (_, action) => {
-            return action.payload
-        })
-    }
-})
+  name: "pokemon",
+  initialState,
+  reducers: {},
+  extraReducers(builder) {
+    builder.addCase(listPokemon.fulfilled, (_, action) => {
+      return action.payload;
+    });
+  },
+});
 
-export default pokemonSlice.reducer
+export default pokemonSlice.reducer;

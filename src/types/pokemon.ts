@@ -8,7 +8,7 @@ export type Generations =
   | "Gen-VI"
   | "Gen-VII"
   | "Gen-VIII"
-  | "Gen-IX"
+  | "Gen-IX";
 
 export type Type =
   | "normal"
@@ -28,7 +28,7 @@ export type Type =
   | "dragon"
   | "dark"
   | "fairy"
-  | "psychic"
+  | "psychic";
 
 export const typeColor = {
   psychic: "#f9757a",
@@ -48,17 +48,62 @@ export const typeColor = {
   water: "#539ddf",
   fire: "#ff9c54",
   grass: "#63bb5b",
-  normal: "#9099a1"
+  normal: "#9099a1",
+};
+
+export interface NamedAPIResource {
+  name: string;
+  url: string;
 }
 
-export interface NamePokemonApi {
-  name: string
-  url: string
+export interface FetchPokemons {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: NamedAPIResource[];
 }
 
-export interface ApiResponse {
-  count: number,
-  next: string | null
-  previous: string | null
-  results: NamePokemonApi[]
+export interface CardPokemonProps {
+  url: string;
+}
+
+export interface Pokemon {
+  base_experience: number;
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  abilities: Ability[];
+  forms: NamedAPIResource[];
+  location_area_encounters: string;
+  sprites: PokemonSprites;
+  species: NamedAPIResource;
+  stats: PokemonStat[];
+  types: PokemonType[];
+}
+
+export interface Ability {
+  isHidden: boolean;
+  slot: number;
+  ability: NamedAPIResource;
+}
+
+export interface PokemonSprites {
+  other: {
+    "official-artwork": {
+      front_default: string;
+      front_shiny: string;
+    };
+  };
+}
+
+export interface PokemonStat {
+  stat: NamedAPIResource;
+  effort: number;
+  base_stat: number;
+}
+
+export interface PokemonType {
+  slot: number;
+  type: NamedAPIResource;
 }

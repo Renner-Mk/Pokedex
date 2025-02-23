@@ -1,27 +1,37 @@
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Grid2 as Grid, useMediaQuery } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { featchPokemon } from "../../../redux/modules/pokemonSlice";
 import { useEffect } from "react";
+import { setTotalPages } from "../../../redux/modules/paginationSlice";
+import { CardPokemon } from "./CardPokemon";
 
 export function PokemonList() {
   const dispatch = useAppDispatch();
-  const { results } = useAppSelector((state) => state.pokemon);
-
-  console.log(results);
+  const pokemons = useAppSelector((state) => state.pokemon);
+  const pagination = useAppSelector((state) => state.pagination);
+  const screen = useMediaQuery("(min-width:445px)");
 
   useEffect(() => {
-    dispatch(featchPokemon());
+    const totalPages = Math.ceil(
+      pokemons.length === 0 ? 1 : pokemons.length / pagination.perPage
+    );
+
+    dispatch(setTotalPages(totalPages));
   }, [dispatch]);
 
   return (
-    <Box>
-      {results.map((pokemon) => (
-        <Card>
-          <CardContent>
-            <Typography>{pokemon.name}</Typography>
-          </CardContent>
-        </Card>
+    <Grid
+      container
+      spacing={2}
+      sx={{
+        height: "max-content",
+        mt: 3,
+      }}
+    >
+      {pokemons.slice(0, 24).map((pokemon) => (
+        <Grid key={pokemon.name} size={{ md: 3, sm: 4, xs: screen ? 6 : 12 }}>
+          <CardPokemon url={pokemon.url} />
+        </Grid>
       ))}
-    </Box>
+    </Grid>
   );
 }

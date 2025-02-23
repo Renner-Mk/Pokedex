@@ -1,5 +1,5 @@
 export interface IPagination {
-    currentPage: number
-    PerPage: number
-    totalOfPage: number
-  }
+  currentPage: number;
+  totalOfPage: number;
+  perPage: 24;
+}

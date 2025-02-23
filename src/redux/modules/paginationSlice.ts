@@ -1,24 +1,24 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IPagination } from "../../types/pagination";
 
 const initialState: IPagination = {
   currentPage: 1,
-  PerPage: 8,
-  totalOfPage: 0
-}
+  perPage: 24,
+  totalOfPage: 0,
+};
 
-const paginationSlice = createSlice({
-  name: 'pagination',
+export const paginationSlice = createSlice({
+  name: "pagination",
   initialState,
   reducers: {
-    changePage: (state, action: PayloadAction<number>) => {
-      return { ...state, currentPage: action.payload }
+    setCurrentPage(state, action: PayloadAction<number>) {
+      return { ...state, currentPage: action.payload };
     },
-    changeRowsPerPage: (state, action: PayloadAction<number>) => {
-      return { ...state, rowsPerPage: action.payload }
-    }
-  }
-})
+    setTotalPages(state, action: PayloadAction<number>) {
+      return { ...state, totalOfPage: action.payload };
+    },
+  },
+});
 
-export const { changePage, changeRowsPerPage } = paginationSlice.actions
-export default paginationSlice.reducer
+export const { setCurrentPage, setTotalPages } = paginationSlice.actions;
+export default paginationSlice.reducer;
