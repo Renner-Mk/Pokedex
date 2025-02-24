@@ -56,6 +56,12 @@ export interface NamedAPIResource {
   url: string;
 }
 
+export interface FavButtonProps {
+  name: string;
+  url: string;
+  havePadding: boolean;
+}
+
 export interface FetchPokemons {
   count: number;
   next: string | null;
@@ -107,3 +113,18 @@ export interface PokemonType {
   slot: number;
   type: NamedAPIResource;
 }
+
+export interface Filter {
+  onlyFavorites: boolean;
+}
+
+export const filterArrayByAnother = (
+  array1: NamedAPIResource[],
+  array2: NamedAPIResource[]
+): NamedAPIResource[] => {
+  const namesInArray2 = new Set(array2.map((item) => item.name));
+
+  const filteredArray = array1.filter((item) => namesInArray2.has(item.name));
+
+  return filteredArray;
+};

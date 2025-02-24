@@ -2,17 +2,18 @@ import { Box, Container, useTheme } from "@mui/material";
 import { Header } from "../../components/Header";
 import { Main } from "../../components/Main";
 import { useEffect } from "react";
-import { useAppDispatch } from "../../redux/hooks";
-import { listPokemon } from "../../redux/modules/pokemonSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { listPokemons } from "../../redux/modules/pokemonSlice";
 
 export function Home() {
-  const theme = useTheme();
-
   const dispatch = useAppDispatch();
+  const theme = useTheme();
+  const filter = useAppSelector((state) => state.filter);
+  const favorites = useAppSelector((state) => state.favorite);
 
   useEffect(() => {
-    dispatch(listPokemon());
-  }, [dispatch]);
+    dispatch(listPokemons({ filter, favorites }));
+  }, [dispatch, favorites, filter]);
 
   return (
     <>

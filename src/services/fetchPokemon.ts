@@ -1,12 +1,28 @@
 import axios from "axios";
-import { FetchPokemons } from "../types/pokemon";
+import {
+  FetchPokemons,
+  Filter,
+  filterArrayByAnother,
+  NamedAPIResource,
+} from "../types/pokemon";
 import { api } from "./api";
 
-export async function fetchPokemons(limit: number, offset: number) {
+export async function fetchPokemons(
+  filter: Filter,
+  favorites: NamedAPIResource[]
+): Promise<NamedAPIResource[]> {
   try {
-    const response = (
-      await api.get(`/pokemon/?limit=${limit}&offset=${offset}`)
-    ).data as FetchPokemons;
+    const response = (await api.get(`/pokemon/?limit=${1025}&offset=${0}`))
+      .data as FetchPokemons;
+
+    if (filter.onlyFavorites) {
+      const filteredByFavorites = filterArrayByAnother(
+        response.results,
+        favorites
+      );
+
+      return filteredByFavorites;
+    }
 
     return response.results;
   } catch (error) {
