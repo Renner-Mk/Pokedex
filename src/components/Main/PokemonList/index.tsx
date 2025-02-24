@@ -30,7 +30,8 @@ export function PokemonList() {
       spacing={2}
       sx={{
         height: "max-content",
-        mt: 3,
+        mt: 5,
+        gap: `${screen ? "2" : "50px"}`,
       }}
     >
       {pokemons
@@ -42,7 +43,13 @@ export function PokemonList() {
           <Grid
             key={pokemon.name}
             size={{ md: 3, sm: 4, xs: screen ? 6 : 12 }}
-            sx={{ height: "250px" }}
+            sx={{
+              height: "250px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              // gap: "25px",
+            }}
           >
             <CardPokemon url={pokemon.url} />
           </Grid>

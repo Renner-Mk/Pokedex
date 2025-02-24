@@ -4,6 +4,7 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  useMediaQuery,
   useTheme,
   Zoom,
 } from "@mui/material";
@@ -24,6 +25,7 @@ export function CardPokemon({ url }: CardPokemonProps) {
 
   const [pokemonData, setPokemonData] = useState<Pokemon | null>();
   const [isOpen, setIsOpen] = useState(false);
+  const screen = useMediaQuery("(min-width:445px)");
 
   useEffect(() => {
     setIsOpen(false);
@@ -72,7 +74,8 @@ export function CardPokemon({ url }: CardPokemonProps) {
       <Card
         sx={{
           position: "relative",
-          width: "100%",
+          width: "200px",
+          minWidth: "180px",
           overflow: "hidden",
           border: `2px solid ${
             theme.palette.mode === "light" ? "white" : "black"
@@ -84,10 +87,10 @@ export function CardPokemon({ url }: CardPokemonProps) {
           flexDirection: "column",
           cursor: "pointer",
           gap: 1,
-          // height: "250px",
           borderRadius: 6,
           p: 1.5,
           background: pokemonData && handleBgColor(),
+          scale: `${screen ? "none" : "1.3"}`,
         }}
       >
         <CardContent
