@@ -34,16 +34,20 @@ export function Header() {
         <Typography
           variant="h1"
           sx={{
-            fontSize: "45px",
+            fontSize: { xs: "24px", sm: "30px", md: "40px", lg: "45px" },
             width: "fit-content",
             backgroundColor: "#ffffff15",
             border: "2px solid #ffffff30",
-            margin: "25px 0 0 20px",
-            padding: "15px",
+            margin: {
+              xs: "15px 0 0 10px",
+              sm: "20px 0 0 15px",
+              md: "25px 0 0 20px",
+            },
+            padding: { xs: "10px", sm: "12px", md: "15px" },
             backdropFilter: "blur(8px)",
           }}
         >
-          Qual Pokemon <br />
+          Qual Pokémon <br />
           você procura?
         </Typography>
       </Box>

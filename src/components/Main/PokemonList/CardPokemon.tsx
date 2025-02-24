@@ -14,7 +14,7 @@ import {
   Type,
   typeColor,
 } from "../../../types/pokemon";
-// import { useAppDispatch } from "../../../redux/hooks";
+import backgroundImage2 from "../../../assets/pikachu.jpg";
 import { useEffect, useState } from "react";
 import { fetchPokemonData } from "../../../services/fetchPokemon";
 import { FavButton } from "./FavButton";
@@ -103,31 +103,37 @@ export function CardPokemon({ url }: CardPokemonProps) {
             height: "100%",
           }}
         >
+          <FavButton name={pokemonData.name} url={url} />
           <Box
             sx={{
               position: "relative",
-              bgcolor: "white",
+              backgroundImage: `url(${backgroundImage2})`,
+              backgroundPosition: "right",
+              backgroundSize: "contain",
               width: "80%",
               height: "100px",
               marginTop: "15px",
               boxShadow:
                 "inset 0px 0px 5px black, inset 0px 0px 8px black, inset 0px 0px 15px black",
               overflow: "hidden",
-              // "&::before": {
-              //   content: '""',
-              //   height: "7px",
-              //   width: "35px",
-              //   bgcolor: "#000000ba",
-              //   display: "block",
-              //   borderRadius: "80%",
-              //   position: "absolute",
-              //   top: "103px",
-              //   left: "41%",
-              //   boxShadow:
-              //     "0px 0px 2px rgba(0, 0, 0, 0.377), 0px 2px 5px rgba(0, 0, 0, 0.377), 0px 4px 7px rgba(0, 0, 0, 0.377), 0px 6px 10px rgba(0, 0, 0, 0.377)",
-              // },
             }}
           >
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundImage: `url(${backgroundImage2})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                filter: "blur(3px)", // Desfoque da imagem
+                boxShadow:
+                  "inset 0px 0px 5px black, inset 0px 0px 8px black, inset 0px 0px 15px black",
+                zIndex: 0, // Coloca a camada extra atrás do conteúdo
+              }}
+            />
             <CardMedia
               image={
                 pokemonData.sprites.other["official-artwork"].front_default
@@ -145,6 +151,7 @@ export function CardPokemon({ url }: CardPokemonProps) {
               title={pokemonData.name}
             />
           </Box>
+
           <Box
             sx={{
               display: "flex",
@@ -173,12 +180,6 @@ export function CardPokemon({ url }: CardPokemonProps) {
               >
                 {pokemonData.species.name}
               </Typography>
-
-              <FavButton
-                name={pokemonData.name}
-                url={url}
-                havePadding={false}
-              />
             </Box>
 
             <Box>

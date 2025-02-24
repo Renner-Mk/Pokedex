@@ -1,4 +1,4 @@
-import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { Favorite } from "@mui/icons-material";
 import { IconButton, useTheme } from "@mui/material";
 
 import { MouseEvent } from "react";
@@ -8,10 +8,9 @@ import { toggleFavorite } from "../../../redux/modules/favoritesSlice";
 interface FavButtonProps {
   name: string;
   url: string;
-  havePadding: boolean;
 }
 
-export function FavButton({ name, url, havePadding }: FavButtonProps) {
+export function FavButton({ name, url }: FavButtonProps) {
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const favorites = useAppSelector((state) => state.favorite);
@@ -25,21 +24,25 @@ export function FavButton({ name, url, havePadding }: FavButtonProps) {
     dispatch(toggleFavorite(currentPokemon));
   };
 
-  const colorOnTheme = theme.palette.mode === "light" ? "white" : "black";
+  const colorOnTheme =
+    theme.palette.mode === "light" ? "#ffffffc0" : "#000000ac";
 
   return (
     <IconButton
       sx={{
         zIndex: 1,
-        padding: havePadding ? "" : 0,
-        scale: 1.5,
+        padding: 0,
+        scale: 1.7,
+        position: "absolute",
+        top: "18px",
+        right: "25px",
       }}
       onClick={handleToggleFavPokemon}
     >
       {isOnFavList ? (
         <Favorite color="primary" />
       ) : (
-        <FavoriteBorder sx={{ color: colorOnTheme }} />
+        <Favorite sx={{ color: colorOnTheme }} />
       )}
     </IconButton>
   );
