@@ -128,3 +128,8 @@ export const filterArrayByAnother = (
 
   return filteredArray;
 };
+
+export interface PokemonModal {
+  isOpen: boolean;
+  url: string;
+}

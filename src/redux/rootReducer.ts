@@ -7,6 +7,7 @@ import pokemonSlice from "./modules/pokemonSlice";
 import paginationSlice from "./modules/paginationSlice";
 import favoritesSlice from "./modules/favoritesSlice";
 import filterSlice from "./modules/filterSlice";
+import pokemonModalSlice from "./modules/pokemonModal";
 
 const rootReducer = combineReducers({
   theme: themeSlice,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   pagination: paginationSlice,
   favorite: favoritesSlice,
   filter: filterSlice,
+  modal: pokemonModalSlice,
 });
 
 export const persistConfig = persistReducer(

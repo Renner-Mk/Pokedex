@@ -1,6 +1,7 @@
 import { Grid2 as Grid, Typography, useMediaQuery } from "@mui/material";
 import { CardPokemon } from "./CardPokemon";
 import { useAppSelector } from "../../../redux/hooks";
+import { ModalPokemon } from "../ModalPokemon";
 
 export function PokemonList() {
   const pokemons = useAppSelector((state) => state.pokemon);
@@ -25,35 +26,39 @@ export function PokemonList() {
   }
 
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{
-        height: "max-content",
-        mt: 5,
-        gap: `${screen ? "2" : "50px"}`,
-      }}
-    >
-      {pokemons
-        .slice(
-          (pagination.currentPage - 1) * pagination.perPage,
-          pagination.currentPage * pagination.perPage
-        )
-        .map((pokemon) => (
-          <Grid
-            key={pokemon.name}
-            size={{ md: 3, sm: 4, xs: screen ? 6 : 12 }}
-            sx={{
-              height: "250px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              // gap: "25px",
-            }}
-          >
-            <CardPokemon url={pokemon.url} />
-          </Grid>
-        ))}
-    </Grid>
+    <>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          height: "max-content",
+          mt: 5,
+          mb: 5,
+          gap: `${screen ? "2" : "50px"}`,
+        }}
+      >
+        {pokemons
+          .slice(
+            (pagination.currentPage - 1) * pagination.perPage,
+            pagination.currentPage * pagination.perPage
+          )
+          .map((pokemon) => (
+            <Grid
+              key={pokemon.name}
+              size={{ md: 3, sm: 4, xs: screen ? 6 : 12 }}
+              sx={{
+                height: "250px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                // gap: "25px",
+              }}
+            >
+              <CardPokemon url={pokemon.url} />
+            </Grid>
+          ))}
+      </Grid>
+      <ModalPokemon />
+    </>
   );
 }

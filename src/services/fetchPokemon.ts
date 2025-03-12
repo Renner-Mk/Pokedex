@@ -45,3 +45,16 @@ export async function fetchPokemonData(url: string) {
     throw new Error("Failed to fetch Pokemon data");
   }
 }
+
+export async function fetchPokemonSearch(url: string) {
+  try {
+    const response = await api.get(`/pokemon/${url}`);
+
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data);
+    }
+    throw new Error("Failed to fetch Pokemon data");
+  }
+}

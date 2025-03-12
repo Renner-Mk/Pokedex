@@ -4,6 +4,7 @@ import backgroundImage from "../../assets/Rayquaza.png";
 import backgroundImage2 from "../../assets/pikachu.jpg";
 
 import { ToggleThemeButton } from "./ToggleTheme";
+import { SearchBar } from "./SearchBar";
 
 export function Header() {
   const theme = useTheme();
@@ -28,7 +29,10 @@ export function Header() {
     >
       <Box
         sx={{
-          marginBottom: "200px",
+          // marginBottom: "200px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "200px",
         }}
       >
         <Typography
@@ -50,6 +54,7 @@ export function Header() {
           Qual Pokémon <br />
           você procura?
         </Typography>
+        <SearchBar />
       </Box>
       <Box sx={{ position: "absolute", top: 39, right: 25 }}>
         <ToggleThemeButton />

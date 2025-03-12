@@ -18,9 +18,11 @@ import backgroundImage2 from "../../../assets/pikachu.jpg";
 import { useEffect, useState } from "react";
 import { fetchPokemonData } from "../../../services/fetchPokemon";
 import { FavButton } from "./FavButton";
+import { openPokemonModal } from "../../../redux/modules/pokemonModal";
+import { useAppDispatch } from "../../../redux/hooks";
 
 export function CardPokemon({ url }: CardPokemonProps) {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const theme = useTheme();
 
   const [pokemonData, setPokemonData] = useState<Pokemon | null>();
@@ -51,6 +53,10 @@ export function CardPokemon({ url }: CardPokemonProps) {
     }
   };
 
+  const handleOpenPokemonModal = () => {
+    dispatch(openPokemonModal(url));
+  };
+
   if (!pokemonData) {
     return (
       <Box
@@ -72,6 +78,7 @@ export function CardPokemon({ url }: CardPokemonProps) {
   return (
     <Zoom in={isOpen}>
       <Card
+        onClick={handleOpenPokemonModal}
         sx={{
           position: "relative",
           width: "200px",

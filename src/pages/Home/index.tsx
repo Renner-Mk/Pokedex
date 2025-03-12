@@ -21,7 +21,7 @@ export function Home() {
         sx={{
           width: "100%",
           height: "100%",
-          bgcolor: "#aaa",
+          bgcolor: theme.palette.mode === "light" ? "#ccc" : "#636363",
           position: "absolute",
         }}
       >
@@ -39,7 +39,6 @@ export function Home() {
         >
           <Header />
           <Main />
-          {/* <Footer /> */}
         </Container>
       </Box>
     </>
