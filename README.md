@@ -2,8 +2,8 @@
 
 The **Pokédex React App** is a web project that consumes the [PokeAPI](https://pokeapi.co/api/v2) to display detailed information about Pokémon. This project was developed as the final project for the advanced module of the Full Stack Web Development course, integrating various modern technologies to create a robust and interactive application.
 
-![Pokedex Preview]()
-![Pokedex Preview]()
+![Pokedex Preview](./src/assets/pokedex1.png)
+![Pokedex Preview](./src/assets/pokedex2.png)
 
 ## Table of Contents 📖
 
@@ -11,12 +11,6 @@ The **Pokédex React App** is a web project that consumes the [PokeAPI](https://
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation and Execution](#installation-and-execution)
-- [Project Structure](#project-structure)
-- [API Integration](#api-integration)
-- [Contribution](#contribution)
-- [License](#license)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
 
 ## Technologies Used 🧑‍💻
 
@@ -75,8 +69,4 @@ yarn dev
 
 ```
 
-Open your browser and navigate to http://localhost:3000 (or the port specified by Vite) to view the application.
-
-## Project Structure
-
-The project is organized as follows:
+Open your browser and navigate to `http://localhost:5173` to view the application.
