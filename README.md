@@ -2,6 +2,9 @@
 
 The **Pokédex React App** is a web project that consumes the [PokeAPI](https://pokeapi.co/api/v2) to display detailed information about Pokémon. This project was developed as the final project for the advanced module of the Full Stack Web Development course, integrating various modern technologies to create a robust and interactive application.
 
+![Pokedex Preview]()
+![Pokedex Preview]()
+
 ## Table of Contents 📖
 
 - [Technologies Used](#technologies-used)
@@ -47,8 +50,33 @@ Before you begin, make sure you have installed the following on your machine:
 ### Cloning the Repository
 
 ```bash
-git clone https://github.com/your-username/repository-name.git
-cd repository-name
+git clone https://github.com/Renner-Mk/Pokedex.git
+cd Pokedex
 ```
 
-##
+### Installing Dependencies
+
+Install the necessary dependencies using npm or Yarn:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### Running the Application
+
+Start the development server with:
+
+```bash
+npm run dev
+# or
+yarn dev
+
+```
+
+Open your browser and navigate to http://localhost:3000 (or the port specified by Vite) to view the application.
+
+## Project Structure
+
+The project is organized as follows:
